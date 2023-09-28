@@ -1,0 +1,14 @@
+.large-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.a {
+    display: flex;
+    flex-direction: column;
+}
+
+.b {
+    display: flex;
+    flex-direction: column;
+}
