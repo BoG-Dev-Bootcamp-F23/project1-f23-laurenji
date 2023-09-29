@@ -12,10 +12,12 @@ async function fetchData() {
     const types = data.types;
     const info = data.stats;
     const moves = data.moves;
+    const height = data.height;
+    const weight = data.weight;
 
     displayName(name);
     displayTypes(types);
-    displayInfo(info);
+    displayInfo(info, height, weight);
     displayMoves(moves);
     displayImage(image);
 
@@ -27,7 +29,6 @@ async function fetchData() {
 }
 
 function displayImage(image) {
-    console.log(image);
     document.getElementById("image").src = image;
 }
 
@@ -49,9 +50,14 @@ function displayMoves(moves) {
     list.append(fragment);
 }
 
-function displayInfo(info) {
+function displayInfo(info, height, weight) {
     const keys = [];
     const values = [];
+
+    keys.push("height");
+    values.push((height * 0.1).toFixed(1) + "m");
+    keys.push("weight");
+    values.push((weight * 0.1).toFixed(1) + "kg");
 
     info.forEach(i => {
         keys.push(i.stat.name);
@@ -73,10 +79,12 @@ function displayInfo(info) {
 }
 
 function displayTypes(types) {
-    const typeNames = [];
+    let typeChunks = document.getElementById("type-container");
+    let newHTML = "";
     types.forEach(t => {
-        typeNames.push(t.type.name);
+        newHTML += `<p id="${t.type.name}">${t.type.name}</p>\n`
     });
+    typeChunks.innerHTML = newHTML;
 }
 
 function displayName(name) {
@@ -104,16 +112,16 @@ function infoDisplay() {
     isDisplayingMoves = false;
     document.getElementById("info").style.backgroundColor = "#7CFF79";
     document.getElementById("moves").style.backgroundColor = "#E8E8E8";
-    console.log("info");
+    document.getElementById("title").innerHTML = "Info";
 }
 
 function movesDisplay() {
     document.getElementById("info-list").style.display = "none";
     document.getElementById("moves-list").style.display = "block";
-    isDisplayingMoves = false;
+    isDisplayingMoves = true;
     document.getElementById("moves").style.backgroundColor = "#7CFF79";
     document.getElementById("info").style.backgroundColor = "#E8E8E8";
-    console.log("moves");
+    document.getElementById("title").innerHTML = "Moves";
 }
 
 fetchData();
