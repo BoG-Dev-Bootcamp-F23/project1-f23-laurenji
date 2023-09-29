@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <h1>Bits of Good Mid-Semester Project</h1>
     <div class="large-container">
         <div class="a">
+            <img src="" alt="picture" id="image">
             <h2 id="name"></h2>
             <h3>Types:</h3>
+            <!-- put types somehow -->
+            <div class="buttonsA">
+                <button id="left" onclick="leftClick()">&#60</button>
+                <button id="right" onclick="rightClick()">&#62</button>
+            </div>
         </div>
         <div class="b">
             <h2>Info</h2>
-            <ul id="list"></ul>
+            <ul id="info-list"></ul>
+            <ul id="moves-list"></ul>
+            <div class="buttonsB">
+                <button id="info" onclick="infoDisplay()">Info</button>
+                <button id="moves" onclick="movesDisplay()">Moves</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
